@@ -1,12 +1,18 @@
 import React from "react";
 import { v4 as uuid } from "uuid";
 
-function ItemForm(props) {
+function ItemForm(itemSubmit, onItemFormSubmit) {
   return (
     <form className="NewItem">
       <label>
         Name:
-        <input type="text" name="name" />
+        <input 
+          type="text" 
+          name="name" 
+          value={itemSubmit} 
+          category="itemCategory"
+          id={uuid}
+        />
       </label>
 
       <label>
@@ -18,7 +24,7 @@ function ItemForm(props) {
         </select>
       </label>
 
-      <button type="submit">Add to List</button>
+      <button type="submit" onSubmit={e => onItemFormSubmit (e.target.value)}>Add to List</button>
     </form>
   );
 }
